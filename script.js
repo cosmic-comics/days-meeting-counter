@@ -1,5 +1,3 @@
-const FIN = new Date("Nov 21 2021 10:00:00 GMT-8");
-
 function getElements(...names) {
   const elements = [];
   for (const name of names) {
@@ -8,14 +6,24 @@ function getElements(...names) {
   return elements;
 }
 
-const [YEARS, MONTHS, DAYS, HOURS, MINUTES, SECONDS] = getElements(
-  "years",
-  "months",
-  "days",
-  "hours",
-  "minutes",
-  "seconds"
-);
+const [MESSAGE_TEXT, YEARS, MONTHS, DAYS, HOURS, MINUTES, SECONDS] =
+  getElements(
+    "messageText",
+    "years",
+    "months",
+    "days",
+    "hours",
+    "minutes",
+    "seconds"
+  );
+
+const meetingDate = new Date("Nov 21 2020 10:00:00 GMT-8");
+
+if (meetingDate - Date.parse(new Date()) < 0) {
+  MESSAGE_TEXT.innerHTML = "The meeting ended ago";
+} else {
+  MESSAGE_TEXT.innerHTML = "The meeting will start in";
+}
 
 const MILI_SECONDS = 1000;
 const MILI_MINUTES = MILI_SECONDS * 60;
@@ -25,7 +33,7 @@ const MILI_MONTHS = MILI_DAYS * (365 / 12);
 const MILI_YEARS = MILI_MONTHS * 12;
 
 const updateCountdown = () => {
-  const DIFFERENCE = Math.abs(FIN - new Date());
+  const DIFFERENCE = Math.abs(meetingDate - new Date());
 
   YEARS.textContent = Math.floor(DIFFERENCE / MILI_YEARS);
   MONTHS.textContent = Math.floor((DIFFERENCE % MILI_YEARS) / MILI_MONTHS);
