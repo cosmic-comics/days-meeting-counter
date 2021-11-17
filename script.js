@@ -1,3 +1,6 @@
+// i hate this, but not in the mod to do it better
+// TODO: to esm, refactor and stuff
+
 function getElements(...names) {
   const elements = [];
   for (const name of names) {
@@ -17,7 +20,7 @@ const [MESSAGE_TEXT, YEARS, MONTHS, DAYS, HOURS, MINUTES, SECONDS] =
     "seconds"
   );
 
-const meetingDate = new Date("Nov 21 2020 10:00:00 GMT-8");
+const meetingDate = new Date("Nov 21 2021 10:00:00 GMT-8");
 
 if (meetingDate - Date.parse(new Date()) < 0) {
   MESSAGE_TEXT.innerHTML = "The meeting ended ago";
